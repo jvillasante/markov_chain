@@ -20,8 +20,11 @@ two-word prefix is used to select the suffix word:
   2. print W1 and W2
   3. loop:
     3.1. randomly choose W3, one of the successors of prefix W1-W2 in the text
+
     3.2. print W3
+
     3.3. replace W1 and W2 by W2 and W3
+
     3.4. repeat loop
 
 * Example run
