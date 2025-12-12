@@ -1,0 +1,47 @@
+#+title: Random English Generator
+#+description: markov chain demostration
+
+* Description
+Mark V. Shaney was a synthetic Usenet user in the 1980s (see:
+https://en.wikipedia.org/wiki/Mark_V._Shaney). This program demostrate the use
+of Markov Chain to generate random English words as explained by Rob Pike (see:
+https://en.wikipedia.org/wiki/Rob_Pike) and Brian Kernighan (see:
+https://en.wikipedia.org/wiki/Brian_Kernighan) in the book The Practice of
+Programming (see: https://en.wikipedia.org/wiki/The_Practice_of_Programming)
+
+* The Markov Chain Algorithm:
+If we imagine the input as a sequence of overlapping phrases, the algorithm
+divides each phrase into two parts, a multi-word prefix and a single suffix word
+that follows the prefix. A Markov chain algorithm emits output phrases by
+randomly choosing the suffix that follows the prefix, according to the
+statistics of (in our case) the original text. Three-word phrases work well - a
+two-word prefix is used to select the suffix word:
+  1. set W1 and W2 to the first two words in the text
+  2. print W1 and W2
+  3. loop:
+    3.1. randomly choose W3, one of the successors of prefix W1-W2 in the text
+    3.2. print W3
+    3.3. replace W1 and W2 by W2 and W3
+    3.4. repeat loop
+
+* Example run
+#+begin_src shell
+make release
+cat build/release/src/data/text1.txt | build/release/src/random_english
+
+# Output:
+One thing was certain, that the _white_ kitten had been hurt by the side of her
+noisy little daughter. The Queen gasped, and sat down: the rapid journey through
+the air by an invisible hand, and being dusted: he was so covered with ashes.
+She said afterwards that she nearly let him drop upon the table near the Queen.
+The King immediately fell flat on his back, and lay perfectly still: and Alice
+was through the glass, and then they hold up one finger. “I’m going to tell you
+all my ideas about Looking-glass House. How would you like to live in
+Looking-glass House, if you leave the door of our drawing-room wide open: and
+it’s very like our books, only the words go the other way. I can see all of it
+when I said ‘Check!’ you purred! Well, it _was_ a nice check, Kitty, and you’ve
+not been punished for any of them yet. You know I’m saving up all your faults.
+Number one: you squeaked twice while Dinah was washing your face this morning.
+Now you can’t deny it, Kitty: I heard you! What’s that you say?” (pretending
+that the _white_ kitten had had nothing to do
+#+end_src
