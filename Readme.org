@@ -17,8 +17,11 @@ randomly choosing the suffix that follows the prefix, according to the
 statistics of (in our case) the original text. Three-word phrases work well - a
 two-word prefix is used to select the suffix word:
   1. set W1 and W2 to the first two words in the text
+
   2. print W1 and W2
+
   3. loop:
+
     3.1. randomly choose W3, one of the successors of prefix W1-W2 in the text
 
     3.2. print W3
